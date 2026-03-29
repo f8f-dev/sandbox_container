@@ -1,7 +1,7 @@
 # ~~Docker~~
 ```sh
-docker build -t my-debian .
-docker create --memory 4g --cpus 2 --name ffd my-debian:latest sleep infinity
+docker build -t ff-debian .
+docker create --memory 4g --cpus 2 --name ffd ff-debian:latest sleep infinity
 docker start ffd
 docker exec -it ffd /bin/bash
 ```
@@ -17,13 +17,13 @@ container system property set build.rosetta false
 container volume create ffd-ssh-data
 container volume create ffd-projects-data
 
-container build --platform linux/arm64 -t my-debian .
+container build --platform linux/arm64 -t ff-debian .
 container create --memory 4g --cpus 2 --name ffd \
   --volume ffd-ssh-data:/root/.ssh \
   --volume ffd-projects-data:/root/projects \
   --mount "type=bind,source=~/projects/sandbox_container/share,target=/root/share" \
   --publish 8000:8000 \
-  my-debian:latest sleep infinity
+  ff-debian:latest sleep infinity
 #container create --memory 4g --cpus 2 --name ffd --volume ffd-ssh-data:/root/.ssh --volume ffd-projects-data:/root/projects --mount "type=bind,source=~/projects/sandbox_container/share,target=/root/share" my-debian:latest sleep infinity
 container start ffd
 container exec -it ffd /bin/bash
