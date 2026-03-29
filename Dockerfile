@@ -22,7 +22,7 @@ RUN uv python install 3 && \
 
 RUN git clone https://github.com/cyborg728/astronvim_template.git ~/.config/nvim
 
-WORKDIR /root
+WORKDIR /root/projects
 
 RUN mkdir -p projects/python
 
